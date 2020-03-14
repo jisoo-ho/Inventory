@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 컨트롤러를 알려주는 역할 -->
+	<bean id="defaultHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	
+	
+	<!-- DB접속 방법 -> JNDI 방법 -->
+	<bean id="boardDAO" class="board.dao.BoardDAO"/>
+	
+	<!-- 페이지 네비게이터 사용 -->
+	<bean id="pageNavigator" class="board.util.PageNavigator" />
+		
+	<!-- 고객사 메인페이지 (주문 미완료 갯수 불러오기)-->
+	<bean name="/custom_main.do" class="board.controller.CMainController">
+		<property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	</bean>
+	
+	
+	<!-- 고객사 재고 확인 페이지  (재고 화면, 입고 리스트) 페이징용 입력값 필요-->
+	<bean name="/c_inventory.do" class="board.controller.CInventoryController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	    <property name="pageNavigator">
+	        <ref bean="pageNavigator"/>
+	    </property>
+	     <property name="commandClass" value="board.page.PageDTO"/>
+	</bean>
+	
+	<!-- 고객사 주문 하기 클래스 (form 으로 받은값 입력)-->
+	<bean name="/order.do" class="board.controller.COrderController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	     <property name="commandClass" value="board.command.CommandClass"/>
+	</bean>
+	
+	<!-- 고객사 주문 확인 클래스 (페이징 위한 입력)-->
+	<bean name="/c_orderCheck.do" class="board.controller.COrderCheckController">
+		<property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	    <property name="pageNavigator">
+	        <ref bean="pageNavigator"/>
+	    </property>
+		<property name="commandClass" value="board.page.PageDTO" />
+	</bean>
+	
+	<!-- 협력사 메인 페이지 (주문 미완료 갯수 불러오기) -->
+	<bean name="/sup_main.do" class="board.controller.SMainController">
+		<property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	</bean>
+	
+	
+	<!-- 협력사 주문 확인 페이지  (주문목록 화면) 페이징용 입력값 필요, 납품하기 기능 -->
+	<bean name="/s_checkOrder.do" class="board.controller.SOrderListController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	    <property name="pageNavigator">
+	        <ref bean="pageNavigator"/>
+	    </property>
+	     <property name="commandClass" value="board.page.PageDTO"/>
+	</bean>
+	
+	<!-- 협력사 납품 하기 클래스 (해당 주문번호 눌렀을시 뿌려주는 화면)/재고부족 실패 포함 -->
+	<bean name="/delivery_check.do" class="board.controller.SDeliveryCheckController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	</bean>
+	
+	
+	<!-- 협력사 납품 최종 확인하고 납품 하기 클래스 (form 으로 받은값 입력)-->
+	<bean name="/delivery_final.do" class="board.controller.SDeliveryFinalController">
+		<property name="dao">
+			<ref bean="boardDAO" />
+		</property>
+		<property name="commandClass" value="board.command.CommandClass" />
+	</bean>
+	
+	
+	<!-- 협력사 재고 확인 페이지  (재고 화면, 납품 리스트) 페이징용 입력값 필요-->
+	<bean name="/s_inventory.do" class="board.controller.SInventoryController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	    <property name="pageNavigator">
+	        <ref bean="pageNavigator"/>
+	    </property>
+	     <property name="commandClass" value="board.page.PageDTO"/>
+	</bean>
+	
+	<!-- 생산 페이지에서 생산 눌렀을 때-->
+	<bean name="/make.do" class="board.controller.MakeProductController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	</bean>
+	
+	<!-- 고객사 재고 확인, 생산 페이지  (재고(완제품, 부품) 리스트, 생산수량 기입)-->
+	<bean name="/cus_mf.do" class="board.controller.CusMFController">
+	    <property name="dao">
+	        <ref bean="boardDAO"/>
+	    </property>
+	</bean>
+	
+		
+	<!-- viewResolver(위치, 이동할 페이지 지정) -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+	    <property name="prefix" value="/JSP/"/>
+	    <property name="suffix" value=".jsp"/>
+	</bean>
+	
+</beans>
