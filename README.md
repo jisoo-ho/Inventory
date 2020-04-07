@@ -6,8 +6,10 @@
  - CSS3
  
 설명 :
-[inventoryPPT.pdf](https://github.com/jisoo-ho/DjangoBlog/files/4433348/inventoryPPT.pdf) \n
-DB 셋팅 FILE : [db-setting(03041616).txt](https://github.com/jisoo-ho/Inventory-project/files/4442553/db-setting.03041616.txt)
+[inventoryPPT.pdf](https://github.com/jisoo-ho/DjangoBlog/files/4433348/inventoryPPT.pdf)
+
+DB 셋팅 FILE :
+[db-setting(03041616).txt](https://github.com/jisoo-ho/Inventory-project/files/4442553/db-setting.03041616.txt)
 
 ![image](https://user-images.githubusercontent.com/61733408/78472324-ca2ac880-7772-11ea-961e-acf46cc17f31.png)
 ![주석 2020-04-05 192247](https://user-images.githubusercontent.com/61733408/78472340-dadb3e80-7772-11ea-9657-14b2d743e11c.jpg)
