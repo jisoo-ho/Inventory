@@ -1,8 +1,9 @@
 # Inventory
  - Language : Java 11g
- - DBMS : Oracle 11.2 ver
+ - DBMS : Oracle
  - Framework : Spring framework
  - Pattern : MVC
+ - Encoding : UTF-8
  - WEB : HTML5, JSP
  
 설명 :
