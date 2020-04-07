@@ -1,9 +1,9 @@
 # Inventory
- - Java 11g
- - Oracle 11.2 ver
- - HTML5
- - JSP
- - CSS3
+ - Language : Java 11g
+ - DBMS : Oracle 11.2 ver
+ - Framework : Spring framework
+ - Pattern : MVC
+ - WEB : HTML5, JSP
  
 설명 :
 [inventoryPPT.pdf](https://github.com/jisoo-ho/DjangoBlog/files/4433348/inventoryPPT.pdf)
