@@ -1,6 +1,6 @@
 # Inventory
- - Language : Java 11g
- - DBMS : Oracle
+ - Language : Java JDK 1.8
+ - DBMS : Oracle 11g XE
  - Framework : Spring framework
  - Pattern : MVC
  - Encoding : UTF-8
